@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Heroes;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\HeroesRequest;
 use App\Http\Requests\StoreHeroesRequest;
 use App\Http\Resources\HeroesResource;
 use Illuminate\Http\Request;
@@ -35,9 +36,9 @@ class HeroesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HeroesRequest $request)
     {
-        $result = Heroes::create($request->all());
+        $result = Heroes::create($request->validated());
 
         return new HeroesResource($result);
     }
