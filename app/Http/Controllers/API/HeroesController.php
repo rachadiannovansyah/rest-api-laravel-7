@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Heroes;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EditHeroesRequest;
 use App\Http\Requests\HeroesRequest;
 use App\Http\Requests\StoreHeroesRequest;
 use App\Http\Resources\HeroesResource;
@@ -61,7 +62,7 @@ class HeroesController extends Controller
      * @param  \App\Heroes  $heroes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Heroes $hero)
+    public function update(EditHeroesRequest $request, Heroes $hero)
     {
         $hero->fill($request->all())->save();
 
